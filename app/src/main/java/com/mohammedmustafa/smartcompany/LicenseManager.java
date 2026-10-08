@@ -14,6 +14,6 @@ public class LicenseManager {
     public long remainingMs(){long now=System.currentTimeMillis(),first=p.getLong("first_run",now),last=p.getLong("last_seen",now);if(now<last)return -1;p.edit().putLong("last_seen",now).apply();return Math.max(0,TRIAL_MS-(now-first));}
     public boolean isTrialValid(){return isActivated()||remainingMs()>0;}
     public int remainingDays(){long r=remainingMs();return r<=0?0:(int)Math.ceil(r/86400000.0);}
-    public String deviceCode(){String id=Settings.Secure.getString(null,Settings.Secure.ANDROID_ID);return id==null?"UNKNOWN":id;}
+    public String deviceCode(){String id=Settings.Secure.getString(context.getContentResolver(),Settings.Secure.ANDROID_ID);return id==null?"UNKNOWN":id;}
     public boolean activate(String code){if(code==null)return false;String x=code.trim();if(x.length()<8)return false;p.edit().putBoolean("activated",true).putString("license_key",x).apply();return true;}
 }
