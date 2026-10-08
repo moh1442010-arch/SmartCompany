@@ -1,0 +1,16 @@
+name: Build SmartCompany Windows
+on: [push, workflow_dispatch]
+jobs:
+ build-windows:
+  runs-on: windows-latest
+  steps:
+   - uses: actions/checkout@v4
+   - uses: actions/setup-dotnet@v4
+     with: { dotnet-version: '8.0.x' }
+   - run: dotnet restore windows/SmartCompany.Windows/SmartCompany.Windows.csproj
+   - run: dotnet build windows/SmartCompany.Windows/SmartCompany.Windows.csproj -c Release --no-restore
+   - run: dotnet publish windows/SmartCompany.Windows/SmartCompany.Windows.csproj -c Release -r win-x64 --self-contained false -o windows/publish
+   - uses: actions/upload-artifact@v4
+     with:
+      name: SmartCompany-Windows-x64
+      path: windows/publish
