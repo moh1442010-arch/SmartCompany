@@ -7,8 +7,8 @@ import android.provider.Settings;
 public class LicenseManager {
     private static final String PREF="license";
     private static final long TRIAL_MS=7L*24L*60L*60L*1000L;
-    private final SharedPreferences p;
-    public LicenseManager(Context c){p=c.getSharedPreferences(PREF,Context.MODE_PRIVATE);init();}
+    private final SharedPreferences p; private final Context context;
+    public LicenseManager(Context c){context=c;p=c.getSharedPreferences(PREF,Context.MODE_PRIVATE);init();}
     private void init(){if(!p.contains("first_run")){long now=System.currentTimeMillis();p.edit().putLong("first_run",now).putLong("last_seen",now).apply();}}
     public boolean isActivated(){return p.getBoolean("activated",false);}
     public long remainingMs(){long now=System.currentTimeMillis(),first=p.getLong("first_run",now),last=p.getLong("last_seen",now);if(now<last)return -1;p.edit().putLong("last_seen",now).apply();return Math.max(0,TRIAL_MS-(now-first));}
