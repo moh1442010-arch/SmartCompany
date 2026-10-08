@@ -1,5 +1,40 @@
 plugins { id 'com.android.application' }
 
-android { namespace 'com.mohammedmustafa.smartcompany'; compileSdk 36
-    defaultConfig { applicationId 'com.mohammedmustafa.smartcompany'; minSdk 21; targetSdk 36; versionCode 6; versionName '1.0.1' }
+def releaseStoreFile = System.getenv("SMARTCOMPANY_KEYSTORE_FILE")
+def releaseStorePassword = System.getenv("SMARTCOMPANY_STORE_PASSWORD")
+def releaseKeyAlias = System.getenv("SMARTCOMPANY_KEY_ALIAS")
+def releaseKeyPassword = System.getenv("SMARTCOMPANY_KEY_PASSWORD")
+
+android {
+    namespace 'com.mohammedmustafa.smartcompany'
+    compileSdk 36
+
+    defaultConfig {
+        applicationId 'com.mohammedmustafa.smartcompany'
+        minSdk 21
+        targetSdk 36
+        versionCode 6
+        versionName '1.0.1'
+    }
+
+    signingConfigs {
+        release {
+            if (releaseStoreFile && releaseStorePassword && releaseKeyAlias && releaseKeyPassword) {
+                storeFile file(releaseStoreFile)
+                storePassword releaseStorePassword
+                keyAlias releaseKeyAlias
+                keyPassword releaseKeyPassword
+            }
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            shrinkResources false
+            if (releaseStoreFile && releaseStorePassword && releaseKeyAlias && releaseKeyPassword) {
+                signingConfig signingConfigs.release
+            }
+        }
+    }
 }
