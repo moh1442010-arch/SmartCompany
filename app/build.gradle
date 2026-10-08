@@ -8,7 +8,6 @@ def releaseKeyPassword = System.getenv("SMARTCOMPANY_KEY_PASSWORD")
 android {
     namespace 'com.mohammedmustafa.smartcompany'
     compileSdk 36
-
     defaultConfig {
         applicationId 'com.mohammedmustafa.smartcompany'
         minSdk 21
@@ -16,7 +15,6 @@ android {
         versionCode 6
         versionName '1.0.1'
     }
-
     signingConfigs {
         release {
             if (releaseStoreFile && releaseStorePassword && releaseKeyAlias && releaseKeyPassword) {
@@ -27,7 +25,6 @@ android {
             }
         }
     }
-
     buildTypes {
         release {
             minifyEnabled false
