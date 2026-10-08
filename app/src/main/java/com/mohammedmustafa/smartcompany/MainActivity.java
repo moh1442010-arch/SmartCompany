@@ -12,6 +12,9 @@ import android.net.Uri;
 import java.security.MessageDigest;
 import java.nio.charset.StandardCharsets;
 import android.database.Cursor;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
+import android.print.PrintManager;
 
 public class MainActivity extends Activity {
     DatabaseHelper db; SharedPreferences prefs; LicenseManager license;
