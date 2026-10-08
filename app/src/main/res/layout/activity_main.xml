@@ -1,0 +1,14 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent" android:layout_height="match_parent" android:background="#F8F9FA">
+ <LinearLayout android:orientation="vertical" android:padding="20dp" android:layout_width="match_parent" android:layout_height="wrap_content">
+  <TextView android:text="شركة محمد مصطفى الذكية" android:textSize="25sp" android:textStyle="bold" android:textColor="#0B1F3A" android:gravity="center" android:layout_width="match_parent" android:layout_height="wrap_content"/>
+  <TextView android:text="نظام المحاسبة وإدارة الشركة" android:textSize="16sp" android:gravity="center" android:layout_marginTop="6dp" android:layout_width="match_parent" android:layout_height="wrap_content"/>
+  <LinearLayout android:orientation="vertical" android:layout_marginTop="24dp" android:layout_width="match_parent" android:layout_height="wrap_content">
+   <Button android:id="@+id/btnInventory" android:text="المخزون والمخازن" android:layout_width="match_parent" android:layout_height="wrap_content"/>
+   <Button android:id="@+id/btnSales" android:text="المبيعات والفواتير" android:layout_width="match_parent" android:layout_height="wrap_content"/>
+   <Button android:id="@+id/btnPurchases" android:text="المشتريات" android:layout_width="match_parent" android:layout_height="wrap_content"/>
+   <Button android:id="@+id/btnEmployees" android:text="الموظفون والعمال والرواتب" android:layout_width="match_parent" android:layout_height="wrap_content"/>
+   <Button android:id="@+id/btnAccounts" android:text="الحسابات والتقارير" android:layout_width="match_parent" android:layout_height="wrap_content"/>
+  </LinearLayout>
+  <TextView android:id="@+id/status" android:text="النسخة 1.0.1" android:layout_marginTop="25dp" android:gravity="center" android:layout_width="match_parent" android:layout_height="wrap_content"/>
+ </LinearLayout>
+</ScrollView>
